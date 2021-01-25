@@ -10,16 +10,13 @@ const usersKey = 'angular-11-crud-example-users';
 const usersJSON = localStorage.getItem(usersKey);
 let users: any[] = usersJSON ? JSON.parse(usersJSON) : [{
     id: 1,
-    CreditcardHolderName: 'raksha',
+    CreditcardHolderName: 'Joe Smith',
     CreditcardNumber: '12345698754',
-    CVV: '12345698754',
-    Amount: '2111',
-
-
-     month: Month.Jan,
+    CVV: '1234',
+    Amount: '2000',
+    month: Month.Jan,
     year: Year.yr1,
-
- }];
+}];
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
