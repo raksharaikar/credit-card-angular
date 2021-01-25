@@ -60,6 +60,9 @@
                 <div *ngIf="submitted && f.month.errors" class="invalid-feedback">
                     <div *ngIf="f.month.errors.required">month is required</div>
                 </div>
+                <div *ngIf="submitted && f.year.errors" class="invalid-feedback">
+                    <div *ngIf="f.year.errors.required">year is required</div>
+                </div>
             </div>
             </div>
             <div class="bank-card__side bank-card__side_back">
@@ -68,10 +71,12 @@
     
                 <div class="form-group cvv">
                     <label>CVC/CVV</label>
-                    <input type="number" placeholder="123" minlength="5" formControlName="CVV" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.CVV.errors }" />
+                    <input type="text" placeholder="123" minlength="4" formControlName="CVV" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.CVV.errors }" />
                     <div *ngIf="submitted && f.CVV.errors" class="invalid-feedback">
                         <div *ngIf="f.CVV.errors.required">Credit Card Number is required</div>
-                        <div *ngIf="f.CVV.errors.minlength">Password must be at least 6 characters</div>
+                        <div *ngIf="f.CVV.errors.minlength">CVV must be min of  3 characters</div>
+                        <div *ngIf="f.CVV.errors.maxlength">CVV must be max of 4 characters</div>
+                        <div *ngIf="f.CVV.errors.pattern">Only numbers</div>
            
                     </div>
                      
@@ -85,7 +90,7 @@
         <div class="form-group col-5">
             <label>Amount</label>
             <input type="number" placeholder="500" formControlName="Amount" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Amount.errors }" />
-            <div *ngIf="submitted && f.Amount.errors" class="invalid-feedback">
+            <div *ngIf="submitted && f.Amount.errors" class="red invalid-feedback ">
                 <div *ngIf="f.Amount.errors.required">Credit Card Number is required</div>
             </div>
         </div>
