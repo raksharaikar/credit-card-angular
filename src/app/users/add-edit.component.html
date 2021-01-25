@@ -1,0 +1,106 @@
+﻿<div class="p-4">
+    <div class="container">
+
+<h1 *ngIf="isAddMode">Add Credit Card Details</h1>
+<br>
+<h1 *ngIf="!isAddMode">Edit Credit Card Details</h1>
+<br>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    
+    
+    <div class="row">
+        <div class="bank-card col-7">
+            <div class="bank-card__side bank-card__side_front">
+                <div class="form-group ">
+                    <label>Credit Card Holder Name</label>
+                    <input type="text" placeholder="Joe Smith" formControlName="CreditcardHolderName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.CreditcardHolderName.errors }" />
+                    <div *ngIf="submitted && f.CreditcardHolderName.errors" class="invalid-feedback">
+                        <div *ngIf="f.CreditcardHolderName.errors.required">Credit Card Holder Name is required</div>
+                    </div>
+                </div>
+             
+                <div class="form-group ">
+                    <label>Credit Card Number</label>
+                    <input type="number" placeholder="**** **** **** ****" formControlName="CreditcardNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.CreditcardNumber.errors }" />
+                    <div *ngIf="submitted && f.CreditcardNumber.errors" class="invalid-feedback">
+                        <div *ngIf="f.CreditcardNumber.errors.required">Credit Card Number is required</div>
+                    </div>
+                </div>
+              <div class="bank-card__inner">
+                <span class="">Expiration</span>
+              </div>
+              <div class="form-group expiry-date">
+                 <select formControlName="month" placeholder="Jan" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.month.errors }">
+                    <option value=""></option>
+                    <option value="Jan">Jan</option>
+                    <option value="Feb">Feb</option>
+                    <option value="Mar">Mar</option>
+                    <option value="Apr">Apr</option>
+                    <option value="May">May</option>
+                    <option value="Jun">Jun</option>
+                    <option value="Jul">Jul</option>
+                    <option value="Aug">Aug</option>
+                    <option value="Sep">Sep</option>
+                    <option value="Oct">Oct</option>
+                    <option value="Nov">Nov</option>
+                    <option value="Dec">Dec</option>
+                </select>
+                <select formControlName="year"  placeholder="25" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.year.errors }">
+                    <option value=""></option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                </select>
+    
+                <div *ngIf="submitted && f.month.errors" class="invalid-feedback">
+                    <div *ngIf="f.month.errors.required">month is required</div>
+                </div>
+            </div>
+            </div>
+            <div class="bank-card__side bank-card__side_back">
+              <div class="bank-card__inner">
+               
+    
+                <div class="form-group cvv">
+                    <label>CVC/CVV</label>
+                    <input type="number" placeholder="123" minlength="5" formControlName="CVV" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.CVV.errors }" />
+                    <div *ngIf="submitted && f.CVV.errors" class="invalid-feedback">
+                        <div *ngIf="f.CVV.errors.required">Credit Card Number is required</div>
+                        <div *ngIf="f.CVV.errors.minlength">Password must be at least 6 characters</div>
+           
+                    </div>
+                     
+                </div>
+              </div>
+            </div>
+           
+            
+        </div>
+        <div class="col-5 btns">
+        <div class="form-group col-5">
+            <label>Amount</label>
+            <input type="number" placeholder="500" formControlName="Amount" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Amount.errors }" />
+            <div *ngIf="submitted && f.Amount.errors" class="invalid-feedback">
+                <div *ngIf="f.Amount.errors.required">Credit Card Number is required</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <button [disabled]="loading" class="btn btn-primary">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                Purchase
+            </button>
+            <a routerLink="/users" class="btn btn-link">Cancel</a>
+        </div>
+       
+        </div>
+    </div>
+</form>
+
+</div>
+</div>
