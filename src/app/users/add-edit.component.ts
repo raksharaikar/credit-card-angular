@@ -32,7 +32,12 @@ export class AddEditComponent implements OnInit {
         this.form = this.formBuilder.group({
                CreditcardHolderName:['', Validators.required],
                CreditcardNumber: ['', Validators.required],
-               CVV: ['', [Validators.minLength(5), this.isAddMode ? Validators.required : Validators.nullValidator]],
+               CVV: ['', [ 
+                Validators.required,  
+                Validators.minLength(3),  
+                Validators.maxLength(4),  
+                Validators.pattern('^[0-9]*$')]],
+
                Amount: ['', Validators.required],
 
             month: ['', Validators.required],

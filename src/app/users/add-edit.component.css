@@ -6,7 +6,13 @@
     align-content: space-between;
     justify-content: flex-start;
 }
+.red.invalid-feedback{
+    color:red;
+}
 
+.invalid-feedback{
+    color:white;
+}
 .cvv{
     width: 25%;
     float: right;
